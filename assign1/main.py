@@ -23,7 +23,7 @@ class MainPage(webapp2.RequestHandler):
         self.response.write('Welcome to my webpage for CS 496\n')
        	self.response.write('### Assignment 1 ###\n')
        	self.response.write('Author: Jiawei Liu \n\n')
-       	self.response.write('Current server time is: ')
+       	self.response.write('Current server(UTC/GMT) time is: ')
        	self.response.write(datetime.datetime.now())
 
 
