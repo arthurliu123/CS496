@@ -6,10 +6,10 @@ app.config['DEBUG'] = True
 # the App Engine WSGI application server.
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def hello():
     """Return a friendly HTTP greeting."""
-    return 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww'
+    return 'my.html'
 
 
 @app.errorhandler(404)
