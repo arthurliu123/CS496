@@ -20,7 +20,7 @@ import datetime
 class MainPage(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('Welcome to my webpage for CS 496\n')
+        self.response.write('\n\nWelcome to my webpage for CS 496\n')
        	self.response.write('### Assignment 1 ###\n')
        	self.response.write('Author: Jiawei Liu \n\n')
        	self.response.write('Current server(UTC/GMT) time is: ')
