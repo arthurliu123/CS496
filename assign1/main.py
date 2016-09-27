@@ -16,16 +16,13 @@ import webapp2
 import datetime
 import httplib2
 
-from oauth2client.appengine import AppAssertionCredentials
-from apiclient.discovery import build
-
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
     	
         self.response.headers['Content-Type'] = 'text/plain'
-       	self.response.write('Assignment 1 --- CS 496.\n')
-       	self.response.write('Author: Jiawei Liu <br>\n\n')
+       	self.response.write('Assignment 1 --- CS 496\n')
+       	self.response.write('Author: Jiawei Liu \n\n')
        	self.response.write('Current time is: ')
        	self.response.write(datetime.datetime.now())
 
