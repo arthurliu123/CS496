@@ -14,7 +14,7 @@
 
 import webapp2
 import datetime
-import httplib2
+
 
 
 class MainPage(webapp2.RequestHandler):
