@@ -1,4 +1,8 @@
 from flask import Flask
+from os import path
+from google.appengine.ext.webapp.template import render
+import webapp2
+
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
@@ -9,7 +13,7 @@ app.config['DEBUG'] = True
 @app.route('/', methods=['GET', 'POST'])
 def hello():
     """Return a friendly HTTP greeting."""
-    return 'my.html'
+    return render_template('index.html')
 
 
 @app.errorhandler(404)
