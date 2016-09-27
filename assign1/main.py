@@ -1,16 +1,33 @@
+# Copyright 2016 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import webapp2
 import datetime
+import httplib2
+
+from oauth2client.appengine import AppAssertionCredentials
+from apiclient.discovery import build
+
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
+    	
         self.response.headers['Content-Type'] = 'text/plain'
-        self.response.headers['Content-Type'] = 'text/plain'
-       	self.response.write('Assignment 1 for CS 496.\n')
-       	self.response.write('Jiawei Liu\n\n')
-       	self.response.write('The time is: ')
+       	self.response.write('Assignment 1 --- CS 496.\n')
+       	self.response.write('Author: Jiawei Liu <br>\n\n')
+       	self.response.write('Current time is: ')
        	self.response.write(datetime.datetime.now())
-       	self.response.write(' \nRefresh the page to see updated time.')
-
 
 
 
