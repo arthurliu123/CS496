@@ -20,9 +20,10 @@ import datetime
 class MainPage(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/plain'
-       	self.response.write('Assignment 1 --- CS 496\n')
+        self.response.write('Welcome to my webpage for CS 496\n')
+       	self.response.write('### Assignment 1 ###\n')
        	self.response.write('Author: Jiawei Liu \n\n')
-       	self.response.write('Current time is: ')
+       	self.response.write('Current server time is: ')
        	self.response.write(datetime.datetime.now())
 
 
