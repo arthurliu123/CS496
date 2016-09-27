@@ -19,7 +19,6 @@ import httplib2
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-    	
         self.response.headers['Content-Type'] = 'text/plain'
        	self.response.write('Assignment 1 --- CS 496\n')
        	self.response.write('Author: Jiawei Liu \n\n')
