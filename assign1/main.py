@@ -25,6 +25,7 @@ class MainPage(webapp2.RequestHandler):
        	self.response.write('Author: Jiawei Liu \n\n')
        	self.response.write('Current server(UTC/GMT) time is: ')
        	self.response.write(datetime.datetime.now())
+       	self.response.write('<br><img src="/images/doge.jpg"')
 
 
 
