@@ -5,6 +5,7 @@ threadsafe: yes
 handlers:
 - url: .*
   script: main.app
+  
 - url: /img
   static_dir: images
 

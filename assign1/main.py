@@ -15,20 +15,14 @@
 import webapp2
 import datetime
 
-
-
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
-        self.response.write('\n\nWelcome to my webpage for CS 496\n')
-       	self.response.write('### Assignment 1 ###\n')
-       	self.response.write('Author: Jiawei Liu \n\n')
-       	self.response.write('Current server(UTC/GMT) time is: ')
-       	self.response.write(datetime.datetime.now())
-       	self.response.write('<br><img src="/images/doge.jpg"')
-
-
-
+        self.response.write('<h3>Welcome to my webpage for CS 496</h3>')
+        self.response.write('<h4>### Assignment 1 ###</h4>')
+        self.response.write('<h4>Author: Jiawei Liu</h4>')
+        self.response.write('Current server(UTC/GMT) time is: ')
+        self.response.write(datetime.datetime.now())
+        self.response.write('<br><br> <img src="http://img.memecdn.com/doge-time_o_2448531.webp">')
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
