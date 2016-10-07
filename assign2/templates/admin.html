@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset='utf-8'>
+		<title>Location Manager</title>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+	</head>
+
+	<body>
+		<form action='{{ uploadUrl }}' method='POST' enctype="multipart/form-data">
+			<input type='hidden' name='action' value='addLocation'>
+			<fieldset>
+				<legend>Location Name</legend>
+				<input type='text' name='locationName' required>
+			</fieldset>
+			<fieldset>
+				<legend>Active Location?</legend>
+				<input type='checkbox' name='locationActive' checked='checked' value='active'>
+			</fieldset>
+			<fieldset>
+				<legend>Upload an image</legend>
+				<input type='file' name='image' required>
+			</fieldset>
+			<fieldset>
+				<legend>Star Rating</legend>
+				<input type='radio' name='rating' value='1' shape='star'>1
+				<input type='radio' name='rating' value='2'>2
+				<input type='radio' name='rating' value='3'>3
+				<input type='radio' name='rating' value='4'>4
+				<input type='radio' name='rating' value='5' checked='checked'>5
+			</fieldset>
+			<fieldset>
+				<legend>Description</legend>
+				<textarea name='description' rows='5' cols='60' placeholder='Enter a description...'></textarea>
+			</fieldset>
+			<input type='submit' value='Add'>
+		</form>
+
+		{% if locations %}
+		<div>
+			<h3>Locations</h3>
+			{% for loc in locations %}
+				<a href='/view?key={{ loc.key }}'>{{ loc.name }}</a>
+			{% endfor %}
+		</div>
+		{% endif %}
+
+		{% if message %}
+		<section>
+			<h3>Result</h3>
+			<p>{{ message }}
+		</section>
+		{% endif %}
+	</body>
+</html>

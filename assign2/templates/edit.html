@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset='utf-8'>
+		<title>Edit {{ location.name }}</title>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+	</head>
+
+	<body>
+		
+		<form action="{{ editUrl }}" method="POST" enctype="multipart/form-data">
+			<input type='hidden' name='key' value='{{ location.key.urlsafe() }}'>
+			<fieldset>
+				<legend>Name</legend>
+				{% if location.name %}
+					<input type='text' name='locationName' value='{{ location.name }}' required>
+				{% else %}
+					<input type='text' name='locationName' required>
+				{% endif %}
+			</fieldset>
+			
+			<fieldset>
+				<legend>Active</legend>
+				{% if location.active == True %}
+					<input type='checkbox' name='locationActive' value='active' checked>
+				{% else %}
+					<input type='checkbox' name='locationActive' value='active'>
+				{% endif %}
+			</fieldset>
+
+			<fieldset>
+				<legend>Image</legend>
+				{% if img_url %}
+					<img src='{{ img_url }}'>
+				{% endif %}
+				<legend>Change image?</legend>
+				<input type='file' name='image'><br>
+				<input type='radio' name='image-action' value='none' checked>No<br>
+				<input type='radio' name='image-action' value='remove'>Remove<br>
+				<input type='radio' name='image-action' value='change'>Change<br>
+			</fieldset>
+
+			<fieldset>
+				<legend>Rating</legend>
+				{% if location.rating %}
+					{% for i in range(1, 6) %}
+						{% if location.rating == i %}
+							<input type='radio' name='rating' value='{{ i }}' checked>{{ i }}
+						{% else %}
+							<input type='radio' name='rating' value='{{ i }}'>{{ i }}
+						{%endif%}
+					{% endfor %}
+				{% endif %}
+			</fieldset>
+			<fieldset>
+				<legend>Description</legend>
+				{% if location.description %}
+					<textarea name='description' rows='5' cols='60'>{{ location.description }}</textarea>
+				{% else %}
+					<textarea name='description' rows='5' cols='60' placeholder='Enter a description...'></textarea>
+				{% endif %}
+			</fieldset>
+			<input type='submit' value='Update'>
+		</form>
+		<form action='/view?key={{ key }}' method='GET'>
+			<button type='submit' name='key' value='{{ key }}'>Cancel</button>
+		</form>
+	</body>
+</html>
