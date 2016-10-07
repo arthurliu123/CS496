@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset='utf-8'>
-		<title>Location Manager</title>
-		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Online Memo---CS496 HW2</title>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/hw3.css"/>
 	</head>
 
 	<body>
 		<form action='{{ uploadUrl }}' method='POST' enctype="multipart/form-data">
 			<input type='hidden' name='action' value='addLocation'>
-			<fieldset>
-				<legend>Location Name</legend>
-				<input type='text' name='locationName' required>
-			</fieldset>
-			<fieldset>
-				<legend>Active Location?</legend>
-				<input type='checkbox' name='locationActive' checked='checked' value='active'>
-			</fieldset>
-			<fieldset>
-				<legend>Upload an image</legend>
-				<input type='file' name='image' required>
-			</fieldset>
-			<fieldset>
-				<legend>Star Rating</legend>
-				<input type='radio' name='rating' value='1' shape='star'>1
-				<input type='radio' name='rating' value='2'>2
-				<input type='radio' name='rating' value='3'>3
-				<input type='radio' name='rating' value='4'>4
-				<input type='radio' name='rating' value='5' checked='checked'>5
-			</fieldset>
-			<fieldset>
-				<legend>Description</legend>
-				<textarea name='description' rows='5' cols='60' placeholder='Enter a description...'></textarea>
-			</fieldset>
-			<input type='submit' value='Add'>
+			
+				Location Name: <br>
+				<input type='text' name='locationName' required> <br><br>
+				
+				Importance: <br>
+				<input type='radio' name='rating' value='1'>Not important <br>
+				<input type='radio' name='rating' value='2'>Average <br>
+				<input type='radio' name='rating' value='3' checked='checked'>Very important 
+				<br><br>
+			
+				Upload an image<br>
+				<input type='file' name='image' ><br><br>
+
+				Detials<br>
+				<textarea name='description' rows='5' cols='60' placeholder='Enter a description for more detials here'></textarea>
+				<br><br>
+
+				Did you finish it?<br>
+				<input type='checkbox' name='locationActive' value='active'><br><br>
+			
+			<input class="btn" type='submit' value='Add'>
 		</form>
 
 		{% if locations %}
 		<div>
-			<h3>Locations</h3>
+			<h3>Memo</h3>
 			{% for loc in locations %}
 				<a href='/view?key={{ loc.key }}'>{{ loc.name }}</a>
 			{% endfor %}
@@ -51,5 +47,23 @@
 			<p>{{ message }}
 		</section>
 		{% endif %}
+
+			<nav id="nav">
+				<div class="innertube">
+					<h3>Describe:</h3>
+					<p> 
+					<b>Welcome to Online Memo!</b><br>
+					In this page, you can <br>
+					write a memo and upload <br> 
+					it to cloud. In addition, <br>
+					you can also upload a <br>
+					detial description and <br>
+					picture in the memo :)
+					</p>
+				</div>
+			</nav>
+
+
+
 	</body>
 </html>
