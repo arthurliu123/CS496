@@ -32,7 +32,7 @@
 				<h3> Importance: </h3>
 				<p>1--Not important &nbsp&nbsp  2--average  &nbsp&nbsp 3--very important</p><br>
 				{% if location.rating %}
-					{% for i in range(1, 3) %}
+					{% for i in range(1, 4) %}
 						{% if location.rating == i %}
 							<input type='radio' name='rating' value='{{ i }}' checked>{{ i }}
 						{% else %}
