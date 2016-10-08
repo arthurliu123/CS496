@@ -59,7 +59,7 @@
 			
 				<h3>Description</h3><br>
 				{% if location.description %}
-					<textarea name='description' rows='5' cols='50'>{{ location.description }}</textarea>
+					<textarea name='description' rows='5' cols='50' required>{{ location.description }}</textarea>
 				{% else %}
 					<textarea name='description' rows='5' cols='50' placeholder='Enter a description for more detials here' required></textarea>
 				{% endif %}
