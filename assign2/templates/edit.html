@@ -8,10 +8,20 @@
 
 	<body>
 		<center>
+		<h2>Welcome to Online Memo!</h2>
+			<p> 
+			In this page, you can update your<br>
+			memo, once you update your memo, click<br>
+			"View Memo" to view updated memo<br>
+			<font color="red">Make sure you fill all blanks to update memo!</font>
+			</p>
+
+
+
 		<form action="{{ editUrl }}" method="POST" enctype="multipart/form-data">
 			<input type='hidden' name='key' value='{{ location.key.urlsafe() }}'>
 			
-				<b> Memo Title: </b><br>
+				<h3> Memo Title: </h3><br>
 				{% if location.name %}
 					<input type='text' name='locationName' value='{{ location.name }}' required>
 				{% else %}
@@ -19,7 +29,8 @@
 				{% endif %}
 			<br><br>
 
-				<b> Importance: </b><br>
+				<h3> Importance: </h3><br>
+				<p>1--Not important   2--average   3--very important</p><br>
 				{% if location.rating %}
 					{% for i in range(1, 3) %}
 						{% if location.rating == i %}
@@ -33,11 +44,11 @@
 
 				
 			
-				<b>Picture:</b><br>
+				<h3>Picture:</h3><br>
 				{% if img_url %}
 					<img src='{{ img_url }}'>
 				{% endif %}
-				Do you want to change the picture? <br>
+				<br>Do you want to change the picture? <br>
 				<input type='radio' name='image-action' value='none' checked>Don't change<br>
 				<input type='radio' name='image-action' value='remove'>Remove it<br>
 				<input type='radio' name='image-action' value='change'>Change to another<br>
@@ -45,7 +56,7 @@
 				<br><br>
 			
 			
-				<b>Description</b><br>
+				<h3>Description</h3><br>
 				{% if location.description %}
 					<textarea name='description' rows='5' cols='60'>{{ location.description }}</textarea>
 				{% else %}
@@ -54,11 +65,11 @@
 				<br><br>
 
 
-			<b>Did you finish it?</b><br>
+			<h3>Did you finish it?</h3><br>
 				{% if location.active == True %}
-					<input type='checkbox' name='locationActive' value='finish' checked> Yes
+					<input type='checkbox' name='locationActive' value='finish' checked> No
 				{% else %}
-					<input type='checkbox' name='locationActive' value='finish'> No
+					<input type='checkbox' name='locationActive' value='finish'> Yes
 				{% endif %}
 			<br><br>
 
@@ -66,7 +77,8 @@
 			<input class="btn" type='submit' value='Update'>
 		</form>
 		<form action='/view?key={{ key }}' method='GET'>
-			<button class="btn" type='submit' name='key' value='{{ key }}'>Cancel</button>
+		<br><br>
+			<button class="btn" type='submit' name='key' value='{{ key }}'>View Memo</button>
 		</form>
 
 	</center>	

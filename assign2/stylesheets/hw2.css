@@ -1,5 +1,7 @@
 			.double {
 				border-style: double;
+				margin-left: 10em;
+				margin-right: 10em;
 			}
 			body{
 				margin:0;

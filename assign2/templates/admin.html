@@ -40,9 +40,9 @@
 		</form>
 
 		{% if locations %}
-		<div class="double" >
 		<br><br>
-			<h3>Memos:</h3>
+		<div class="double" >
+			<h3>Saved Memos:</h3>
 			{% for loc in locations %}
 				<a href='/view?key={{ loc.key }}'>{{ loc.name }}</a>
 			{% endfor %}
