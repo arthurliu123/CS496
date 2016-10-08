@@ -22,7 +22,7 @@ class Admin(BaseHandler):
 			key = ndb.Key(Location, self.app.config.get('default-group'))
 			location = Location(parent = key)
 			location.name = self.request.get('locationName')
-			if self.request.get('locationActive') == 'active':
+			if self.request.get('locationActive') == 'finish':
 				location.active = True
 			else:
 				location.active = False

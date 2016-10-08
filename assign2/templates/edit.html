@@ -7,63 +7,68 @@
 	</head>
 
 	<body>
-		
+		<center>
 		<form action="{{ editUrl }}" method="POST" enctype="multipart/form-data">
 			<input type='hidden' name='key' value='{{ location.key.urlsafe() }}'>
-			<fieldset>
-				<legend>Name</legend>
+			
+				<b> Memo Title: </b><br>
 				{% if location.name %}
 					<input type='text' name='locationName' value='{{ location.name }}' required>
 				{% else %}
 					<input type='text' name='locationName' required>
 				{% endif %}
-			</fieldset>
-			
-			<fieldset>
-				<legend>Active</legend>
-				{% if location.active == True %}
-					<input type='checkbox' name='locationActive' value='active' checked>
-				{% else %}
-					<input type='checkbox' name='locationActive' value='active'>
-				{% endif %}
-			</fieldset>
+			<br><br>
 
-			<fieldset>
-				<legend>Image</legend>
-				{% if img_url %}
-					<img src='{{ img_url }}'>
-				{% endif %}
-				<legend>Change image?</legend>
-				<input type='file' name='image'><br>
-				<input type='radio' name='image-action' value='none' checked>No<br>
-				<input type='radio' name='image-action' value='remove'>Remove<br>
-				<input type='radio' name='image-action' value='change'>Change<br>
-			</fieldset>
-
-			<fieldset>
-				<legend>Rating</legend>
+				<b> Importance: </b><br>
 				{% if location.rating %}
-					{% for i in range(1, 6) %}
+					{% for i in range(1, 3) %}
 						{% if location.rating == i %}
 							<input type='radio' name='rating' value='{{ i }}' checked>{{ i }}
 						{% else %}
 							<input type='radio' name='rating' value='{{ i }}'>{{ i }}
 						{%endif%}
 					{% endfor %}
+				{% endif %}			
+			<br><br>
+
+				
+			
+				<b>Picture:</b><br>
+				{% if img_url %}
+					<img src='{{ img_url }}'>
 				{% endif %}
-			</fieldset>
-			<fieldset>
-				<legend>Description</legend>
+				Do you want to change the picture? <br>
+				<input type='radio' name='image-action' value='none' checked>Don't change<br>
+				<input type='radio' name='image-action' value='remove'>Remove it<br>
+				<input type='radio' name='image-action' value='change'>Change to another<br>
+				<input type='file' name='image'><br>
+				<br><br>
+			
+			
+				<b>Description</b><br>
 				{% if location.description %}
 					<textarea name='description' rows='5' cols='60'>{{ location.description }}</textarea>
 				{% else %}
-					<textarea name='description' rows='5' cols='60' placeholder='Enter a description...'></textarea>
+					<textarea name='description' rows='5' cols='60' placeholder='Enter a description for more detials here'></textarea>
 				{% endif %}
-			</fieldset>
-			<input type='submit' value='Update'>
+				<br><br>
+
+
+			<b>Did you finish it?</b><br>
+				{% if location.active == True %}
+					<input type='checkbox' name='locationActive' value='finish' checked> Yes
+				{% else %}
+					<input type='checkbox' name='locationActive' value='finish'> No
+				{% endif %}
+			<br><br>
+
+
+			<input class="btn" type='submit' value='Update'>
 		</form>
 		<form action='/view?key={{ key }}' method='GET'>
-			<button type='submit' name='key' value='{{ key }}'>Cancel</button>
+			<button class="btn" type='submit' name='key' value='{{ key }}'>Cancel</button>
 		</form>
+
+	</center>	
 	</body>
 </html>

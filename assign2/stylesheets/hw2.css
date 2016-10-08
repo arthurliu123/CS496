@@ -1,3 +1,6 @@
+			.double {
+				border-style: double;
+			}
 			body{
 				margin:0;
 				padding:0;

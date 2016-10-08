@@ -7,28 +7,39 @@
 	</head>
 
 	<body>
+	<center>
 		{% if location.name %}
-			<h3>Location Name</h3>
+			<h3>Memo Title:</h3>
 			<p>{{ location.name }}
 		{% endif %}
-			<h3>Location Active</h3>
+		
+
+		
+		{% if location.rating %}
+			<h3>Importance:</h3>
+			<p>{{ location.rating }} 
+		{% endif %}
+
+		{% if location.description %}
+			<h3>Detials:</h3>
+			<blockquote>{{ location.description }}</blockquote>
+		{% endif %}
+
+		{% if img_url %}
+			<h3>Memo Picture:</h3>
+			<img src='{{ img_url }}'>
+		{% endif %}
+		
+			<h3>Finished it?</h3>
 			{% if location.active %}
 				<p>{{ location.active }}
 			{% else %}
-				<p>False
-			{% endif %}
-		{% if img_url %}
-			<h3>Location Image</h3>
-			<img src='{{ img_url }}'>
-		{% endif %}
-		{% if location.rating %}
-			<h3>Location Rating</h3>
-			<p>{{ location.rating }} Stars
-		{% endif %}
-		{% if location.description %}
-			<h3>Description</h3>
-			<blockquote>{{ location.description }}</blockquote>
-		{% endif %}
-		<br><br><b><a href='/edit?key={{ key }}'>Edit Location</a>
+				<p>Haven't finsh yet
+			{% endif %}		
+		
+		<br><br>
+		<b><a class="btn" href='/edit?key={{ key }}'>Update your Memo</a> </b>
+
+		</center>
 	</body>
 </html>

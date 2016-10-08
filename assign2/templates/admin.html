@@ -21,9 +21,9 @@
 				<input type='text' name='locationName' required> <br><br>
 				
 				<b>Importance: </b> <br>
-				<input type='radio' name='rating' value='1'>Not important <br>
-				<input type='radio' name='rating' value='2'>Average <br>
-				<input type='radio' name='rating' value='3' checked='checked'>Very important 
+				<input type='radio' name='rating' value='Not important'>Not important <br>
+				<input type='radio' name='rating' value='Average'>Average <br>
+				<input type='radio' name='rating' value='Very important' checked='checked'>Very important 
 				<br><br>
 			
 				<b>Upload an image</b><br>
@@ -34,26 +34,21 @@
 				<br><br>
 
 				<b>Did you finish it?</b><br>
-				<input type='checkbox' name='locationActive' value='Finished'><br><br>
+				<input type='checkbox' name='locationActive' value='finish'><br><br>
 			
 			<input class="btn" type='submit' value='Add'>
 		</form>
 
 		{% if locations %}
-		<div>
-			<h3>Memo</h3>
+		<div class="double" >
+		<br><br>
+			<h3>Memos:</h3>
 			{% for loc in locations %}
 				<a href='/view?key={{ loc.key }}'>{{ loc.name }}</a>
 			{% endfor %}
 		</div>
 		{% endif %}
 
-		{% if message %}
-		<section>
-			<h3>Result</h3>
-			<p>{{ message }}
-		</section>
-		{% endif %}
 
 </center>
 	</body>

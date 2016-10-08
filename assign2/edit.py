@@ -21,7 +21,7 @@ class EditLocation(blobstore_handlers.BlobstoreUploadHandler):
 		locationKey = ndb.Key(urlsafe=self.request.get('key'))
 		location = locationKey.get()
 		location.name = self.request.get('locationName')
-		if self.request.get('locationActive') == 'active':
+		if self.request.get('locationActive') == 'finish':
 			location.active = True
 		else:
 			location.active = False
