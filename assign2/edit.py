@@ -20,12 +20,12 @@ class EditLocation(blobstore_handlers.BlobstoreUploadHandler):
 	def post(self):
 		locationKey = ndb.Key(urlsafe=self.request.get('key'))
 		location = locationKey.get()
-		location.name = self.request.get('locationName')
-		if self.request.get('locationActive') == 'finish':
+		location.name = self.request.get('memotitle')
+		if self.request.get('memofinish') == 'finish':
 			location.active = True
 		else:
 			location.active = False
-		location.rating = int(self.request.get('rating'))
+		location.rating = int(self.request.get('importance'))
 		location.description = str(self.request.get('description'))
 		if self.request.get('image-action') == 'remove':
 			location.image = None

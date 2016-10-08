@@ -15,26 +15,26 @@
 			detial description and picture in the memo :)
 			</p>		
 		<form action='{{ uploadUrl }}' method='POST' enctype="multipart/form-data">
-			<input type='hidden' name='action' value='addLocation'>
+				<input type='hidden' name='action' value='addmemo'>
 			
 				<b>Memo Title:</b> <br>
-				<input type='text' name='locationName' required> <br><br>
+				<input type='text' name='memotitle' required> <br><br>
 				
 				<b>Importance: </b> <br>
-				<input type='radio' name='rating' value='1'>Not important <br>
-				<input type='radio' name='rating' value='2'>Average <br>
-				<input type='radio' name='rating' value='3' checked='checked'>Very important 
+				<input type='radio' name='importance' value='1'>Not important <br>
+				<input type='radio' name='importance' value='2'>Average <br>
+				<input type='radio' name='importance' value='3' checked='checked'>Very important 
 				<br><br>
 			
 				<b>Upload an image</b><br>
 				<input type='file' name='image' required><br><br>
 
 				<b>Detials:</b><br>
-				<textarea name='description' rows='5' cols='60' placeholder='Enter a description for more detials here' required></textarea>
+				<textarea name='description' rows='5' cols='50' placeholder='Enter a description for more detials here' required> </textarea>
 				<br><br>
 
 				<b>Did you finish it?</b><br>
-				<input type='checkbox' name='locationActive' value='finish'>Yes/leave blank for no<br><br>
+				<input type='checkbox' name='memofinish' value='finish'>Yes/leave blank for no<br><br>
 			
 			<input class="btn" type='submit' value='Add Memo'>
 		</form>

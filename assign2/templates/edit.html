@@ -23,9 +23,9 @@
 			
 				<h3> Memo Title: </h3>
 				{% if location.name %}
-					<input type='text' name='locationName' value='{{ location.name }}' required>
+					<input type='text' name='memotitle' value='{{ location.name }}' required>
 				{% else %}
-					<input type='text' name='locationName' required>
+					<input type='text' name='memotitle' required>
 				{% endif %}
 			<br><br>
 
@@ -34,9 +34,9 @@
 				{% if location.rating %}
 					{% for i in range(1, 4) %}
 						{% if location.rating == i %}
-							<input type='radio' name='rating' value='{{ i }}' checked>{{ i }}
+							<input type='radio' name='importance' value='{{ i }}' checked>{{ i }}
 						{% else %}
-							<input type='radio' name='rating' value='{{ i }}'>{{ i }}
+							<input type='radio' name='importance' value='{{ i }}'>{{ i }}
 						
 						{%endif%}
 					{% endfor %}
@@ -59,18 +59,18 @@
 			
 				<h3>Description</h3><br>
 				{% if location.description %}
-					<textarea name='description' rows='5' cols='60'>{{ location.description }}</textarea>
+					<textarea name='description' rows='5' cols='50'>{{ location.description }}</textarea>
 				{% else %}
-					<textarea name='description' rows='5' cols='60' placeholder='Enter a description for more detials here'></textarea>
+					<textarea name='description' rows='5' cols='50' placeholder='Enter a description for more detials here' required></textarea>
 				{% endif %}
 				<br><br>
 
 
 			<h3>Did you finish it?</h3>
 				
-					<input type='checkbox' name='locationActive' value='finish' checked> Yes
+					<input type='checkbox' name='memofinish' value='finish' checked> Yes
 				
-					<input type='checkbox' name='locationActive' value='nofinish'> No
+					<input type='checkbox' name='memofinish' value='nofinish'> No
 				
 			<br><br>
 
