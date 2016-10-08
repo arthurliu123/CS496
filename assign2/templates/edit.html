@@ -37,6 +37,8 @@
 							<input type='radio' name='rating' value='{{ i }}' checked>{{ i }}
 						{% else %}
 							<input type='radio' name='rating' value='{{ i }}'>{{ i }}
+						{% else %}
+							<input type='radio' name='rating' value='{{ i }}'>{{ i }}
 						{%endif%}
 					{% endfor %}
 				{% endif %}			
@@ -67,18 +69,18 @@
 
 			<h3>Did you finish it?</h3>
 				{% if location.active == True %}
-					<input type='checkbox' name='locationActive' value='finish' checked> No
-				{% else %}
-					<input type='checkbox' name='locationActive' value='finish'> Yes
+					<input type='checkbox' name='locationActive' value='finish' checked> Yes
+				
+					<input type='checkbox' name='locationActive' value='finish'> No
 				{% endif %}
 			<br><br>
 
 
-			<input class="btn" type='submit' value='Update'>
-		</form>
-		<form action='/view?key={{ key }}' method='GET'>
-		<br>
-			<button class="btn" type='submit' name='key' value='{{ key }}'>View Memo</button>
+			<input class="btn" type='submit' value='Update'> &nbsp&nbsp
+
+			<a class="btn" href='/view?key={{ key }}'>View Memo</a> &nbsp&nbsp
+
+			<a class="btn" href='/admin?key={{ key }}'>Back to Main page</a>
 		</form>
 
 	</center>	
