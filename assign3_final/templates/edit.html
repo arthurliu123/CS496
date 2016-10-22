@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset='utf-8'>
+		<title>Edit {{ location.title }}</title>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/hw2.css"/>
+	</head>
+
+	<body>
+		<center>
+		<h2>Welcome to Memo update page!</h2>
+			<p> 
+			In this page, you can update your<br>
+			memo, once you update your memo, click<br>
+			"View Memo" to view updated memo<br>
+			<b><font color="red">Make sure you fill all blanks to update memo!</font></b>
+			</p>
+
+
+
+		<form action="{{ editUrl }}" method="POST" enctype="multipart/form-data">
+			<input type='hidden' name='key' value='{{ location.key.urlsafe() }}'>
+			
+				<h3> Memo Title: </h3>
+				{% if location.title %}
+					<input type='text' name='locationName' value='{{ location.title }}' required>
+				{% else %}
+					<input type='text' name='locationName' required>
+				{% endif %}
+			<br><br>
+
+				<h3> Importance: </h3>
+				<p>1--Not important &nbsp&nbsp  2--average  &nbsp&nbsp 3--very important</p><br>
+				{% if location.improtance %}
+					{% for i in range(1, 4) %}
+						{% if location.improtance == i %}
+							<input type='radio' name='rating' value='{{ i }}' checked>{{ i }}
+						{% else %}
+							<input type='radio' name='rating' value='{{ i }}'>{{ i }}
+						
+						{%endif%}
+					{% endfor %}
+				{% endif %}			
+			<br><br>
+
+				
+			
+				<h3>Picture:</h3>
+				{% if img_url %}
+					<img src='{{ img_url }}'>
+				{% endif %}
+				<br>Do you want to change the picture? <br>
+				<input type='radio' name='image-action' value='none' checked>Don't change<br>
+				<input type='radio' name='image-action' value='remove'>Remove it<br>
+				<input type='radio' name='image-action' value='change'>Change to another<br>
+				<input type='file' name='image'><br>
+				<br><br>
+			
+			
+				<h3>Description</h3><br>
+				{% if location.description %}
+					<textarea name='description' rows='5' cols='60'>{{ location.description }}</textarea>
+				{% else %}
+					<textarea name='description' rows='5' cols='60' placeholder='Enter a description for more detials here'></textarea>
+				{% endif %}
+				<br><br>
+
+
+			<h3>Did you finish it?</h3>
+				
+					<input type='checkbox' name='locationActive' value='finish' checked> Yes
+				
+					<input type='checkbox' name='locationActive' value='nofinish'> No
+				
+			<br><br>
+
+
+			<input class="btn" type='submit' value='Update'> &nbsp&nbsp
+
+			<a class="btn" href='/view?key={{ key }}'>View Memo</a> &nbsp&nbsp
+
+			<a class="btn" href='/admin?key={{ key }}'>Back to Main page</a>
+		</form>
+
+	</center>	
+	</body>
+</html>
