@@ -6,7 +6,6 @@ from google.appengine.ext import ndb
 
 class Locations(BaseHandler):
 	def get(self, **args):
-		# Return existing Location entities
 		if 'application/json' not in self.request.accept:
 			self.response.status = 400
 			self.respone.status_message = 'ONLY application/json is supported.'
@@ -25,7 +24,6 @@ class Locations(BaseHandler):
 			self.response.write('\n')
 
 	def post(self):
-		# Make new Location entities
 		if 'application/json' not in self.request.accept:
 			self.response.status = 400
 			self.response.status_message = 'ONLY application/json is supported.'
@@ -44,15 +42,13 @@ class Locations(BaseHandler):
 			try:
 				location_obj = json.loads(jsonstring)
 			except:
-				# No JSON provided, move along
 				pass
 
-			# If POST received with a json string provided, behave accordingly
 			if location_obj is not None:
 				if 'title' not in location_obj:
 					self.response.status = 400
 					self.response.status_message = 'Invalid request - a memo title is required for [POST].'
-					self.response.write('Invalid request - a memo title is required [POST].\n')
+					self.response.write('Invalid request - a memo title is required.\n')
 					return
 				else:
 					title = location_obj['title']
@@ -93,7 +89,6 @@ class Locations(BaseHandler):
 			return
 
 	def delete(self, **args):
-		# Remove Location entities
 		if 'application/json' not in self.request.accept:
 			self.response.status = 400
 			self.response.status_message = 'ONLY application/json is supported.'
@@ -101,11 +96,8 @@ class Locations(BaseHandler):
 			return
 
 		else:
-			# If ID specified proceed with deletion of Location
 			if 'lid' in args:
-				#loc = ndb.Key(ndb_definitions.Location, int(args['lid']))
 				loc = ndb_definitions.Location.query(ancestor=ndb.Key(Location, int(args['lid'])))
-				#location = loc.fetch()
 				ndb.delete_multi(loc.fetch(keys_only=True))
 
 				message = 'Memo ID: ' + str(args['lid']) + ' has been deleted from datastore.\n'
@@ -113,16 +105,13 @@ class Locations(BaseHandler):
 				self.response.status_message = message
 				self.response.write(message)
 
-			# Cannot remove an entity without an ID specified
 			else:
 				message = 'Invalid request. A Memo ID must be specified to delete a Memo from datastore.\n'
 				self.response.status = 400
 				self.response.status_message = message
 				self.response.write(message)
 
-# For adding/getting comments for Locations
 class LocationComments(BaseHandler):
-	# Get all comments for a Location entity
 	def get(self, **args):
 		if 'application/json' not in self.request.accept:
 			self.response.status = 400
@@ -132,7 +121,6 @@ class LocationComments(BaseHandler):
 			if 'lid' in args:
 				loc = ndb.Key(ndb_definitions.Location, int(args['lid'])).get().to_dict()
 				comment = loc['comments']
-				#for c in loc['comments']:
 				self.response.write(json.dumps(comment))
 				self.response.write('\n')
 				self.response.write(str(len(comment)))
@@ -143,8 +131,6 @@ class LocationComments(BaseHandler):
 				self.response.status_message = message
 				self.response.write(message)
 
-	# Add new comment to a Location
-	# Also can update existing attributes of a Location
 	def put(self, **args):
 		if 'application/json' not in self.request.accept:
 			self.response.status = 400
