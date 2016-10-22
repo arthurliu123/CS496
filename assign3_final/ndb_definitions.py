@@ -43,6 +43,6 @@ class User(ndb.Model):
 	title = ndb.StringProperty(required=True)
 	email = ndb.StringProperty(required=True)
 	image = ndb.BlobProperty()
-	sports = ndb.StringProperty(repeated=True)
+	U_title = ndb.StringProperty(repeated=True)
 	improtance = ndb.IntegerProperty()
 	#comments = ndb.StructuredProperty(Comment, required=False, repeated=True)
