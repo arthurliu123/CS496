@@ -7,13 +7,11 @@ class Model(ndb.Model):
 		return d
 
 class Comment(ndb.Model):
-	# Class that represents a comment
 	author = ndb.StringProperty(required=True)
 	body = ndb.StringProperty()
 	timestamp = ndb.DateTimeProperty(auto_now_add=True)
 
 class Location(ndb.Model):
-	# Class that repesents pick up game locations
 	title = ndb.StringProperty(required=True)
 	description = ndb.StringProperty()
 	finish = ndb.BooleanProperty()
@@ -39,10 +37,8 @@ class Location(ndb.Model):
 		}
 
 class User(ndb.Model):
-	# Class that represents users who will utilize locations
 	title = ndb.StringProperty(required=True)
 	email = ndb.StringProperty(required=True)
 	image = ndb.BlobProperty()
 	U_title = ndb.StringProperty(repeated=True)
 	improtance = ndb.IntegerProperty()
-	#comments = ndb.StructuredProperty(Comment, required=False, repeated=True)

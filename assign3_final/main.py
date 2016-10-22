@@ -11,6 +11,6 @@ app = webapp2.WSGIApplication([
 	('/location/edit', 'edit.EditLocation'),
 	('/edit', 'edit.ViewEditLocation')
 ], debug = True, config = config)
-app.router.add(webapp2.Route(r'/memos', 'locations.Locations'))
-app.router.add(webapp2.Route(r'/memos/<lid:[0-9]+><:/?>', 'locations.Locations'))
-app.router.add(webapp2.Route(r'/memos/<lid:[0-9]+><:/?>/comments', 'locations.LocationComments'))
+app.router.add(webapp2.Route(r'/memos', 'memos.Locations'))
+app.router.add(webapp2.Route(r'/memos/<lid:[0-9]+><:/?>', 'memos.Locations'))
+app.router.add(webapp2.Route(r'/memos/<lid:[0-9]+><:/?>/comments', 'memos.LocationComments'))

@@ -7,9 +7,7 @@ class Admin(BaseHandler):
 		self.templateValues = {}
 		self.templateValues['uploadUrl'] = blobstore.create_upload_url( '/location/add' )
 
-	# render for self.render within this file
 	def render(self, page):
-		#self.templateValues['comments'] = [{'date': i.date, 'body': i.body, 'key': i.key.urlsafe()} for i in Comment.query().fetch()]
 		self.templateValues['locations'] = [{'title': i.title, 'key':i.key.urlsafe()} for i in Location.query(ancestor = ndb.Key(Location, self.app.config.get('default-group'))).fetch()]
 		BaseHandler.render(self, page, self.templateValues)
 
