@@ -44,7 +44,7 @@
 		<div class="double" >
 			<h3>Saved Memos:</h3>
 			{% for loc in locations %}
-				<a href='/view?key={{ loc.key }}'>{{ loc.name }}</a>
+				<a href='/view?key={{ loc.key }}'>{{ loc.title }}</a>
 			{% endfor %}
 		</div>
 		{% endif %}

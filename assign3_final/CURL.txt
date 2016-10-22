@@ -5,10 +5,10 @@ curl https://jiawei-liu-cs496-assign3.appspot.com/memos
 curl https://jiawei-liu-cs496-assign3.appspot.com/memos/<PUT ID HERE>/comments
 
 ***Create a new memo by POST***
-curl -H "Content-type: application/json" --data '{"title":"Memo 11"}' https://jiawei-liu-cs496-assign3.appspot.com/memos
+curl -H "Content-type: application/json" --data '{"title":"Memo 1"}' https://jiawei-liu-cs496-assign3.appspot.com/memos
 
 ***Create new memo with comments by POST***
-curl -H "Content-Type: application/json" -X POST -d '{"title":"memo 22", "description":"this is memo test 2", "improtance":"3", "comments":{"comment1":{"author":"Jiawei", "body":"This memo is useful"}, "comment2":{"author":"Jack", "body":"I hate this memo"}}}' https://jiawei-liu-cs496-assign3.appspot.com/memos
+curl -H "Content-Type: application/json" -X POST -d '{"title":"memo 2", "description":"this is memo test 2", "improtance":"3", "comments":{"comment1":{"author":"Jiawei", "body":"This memo is useful"}, "comment2":{"author":"Jack", "body":"I hate this memo"}}}' https://jiawei-liu-cs496-assign3.appspot.com/memos
 
 ***Add comment in a memo by PUT***
 curl -H "Content-type: application/json" -X PUT -d '{"comments":{"comment1":{"author":"Jiawei", "body":"i am first to comment"}, "comment2":{"author":"jack", "body":"I am not the first one"}}}' https://jiawei-liu-cs496-assign3.appspot.com/memos/<PUT ID HERE>/comments

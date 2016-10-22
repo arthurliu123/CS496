@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset='utf-8'>
-		<title>{{ location.name }}</title>
+		<title>{{ location.title }}</title>
 		<link type="text/css" rel="stylesheet" href="/stylesheets/hw2.css"/>
 	</head>
 
@@ -14,16 +14,16 @@
 			</p>		
 
 
-		{% if location.name %}
+		{% if location.title %}
 			<h3>Memo Title:</h3>
-			<p>{{ location.name }}
+			<p>{{ location.title }}
 		{% endif %}
 		
 
 		
-		{% if location.rating %}
+		{% if location.improtance %}
 			<h3>Importance:</h3>
-			<p>{{ location.rating }} 
+			<p>{{ location.improtance }} 
 		{% endif %}
 
 		{% if location.description %}
@@ -37,8 +37,8 @@
 		{% endif %}
 		
 			<h3>Finished it?</h3>
-			{% if location.active %}
-				<p>{{ location.active }}
+			{% if location.finish %}
+				<p>{{ location.finish }}
 			{% else %}
 				<p>Haven't finsh yet
 			{% endif %}		

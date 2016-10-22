@@ -11,12 +11,12 @@ class Comment(ndb.Model):
 	body = ndb.StringProperty()
 	timestamp = ndb.DateTimeProperty(auto_now_add=True)
 
-class Memo(ndb.Model):
+class MM(ndb.Model):
 	title = ndb.StringProperty(required=True)
 	description = ndb.StringProperty()
 	finish = ndb.BooleanProperty()
 	image = ndb.BlobProperty()
-	important = ndb.IntegerProperty()
+	improtance = ndb.IntegerProperty()
 	comments = ndb.StructuredProperty(Comment, repeated=True)
 
 	def to_dict(self):
@@ -32,7 +32,7 @@ class Memo(ndb.Model):
 			'description': self.description,
 			'finish': self.finish,
 			'image': self.image,
-			'important': self.important,
+			'improtance': self.improtance,
 			'comments': all_comments
 		}
 
@@ -40,5 +40,5 @@ class User(ndb.Model):
 	title = ndb.StringProperty(required=True)
 	email = ndb.StringProperty(required=True)
 	image = ndb.BlobProperty()
-	n_title = ndb.StringProperty(repeated=True)
-	important = ndb.IntegerProperty()
+	U_title = ndb.StringProperty(repeated=True)
+	improtance = ndb.IntegerProperty()

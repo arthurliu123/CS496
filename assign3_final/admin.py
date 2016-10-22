@@ -7,10 +7,8 @@ class Admin(BaseHandler):
 		self.templateValues = {}
 		self.templateValues['uploadUrl'] = blobstore.create_upload_url( '/location/add' )
 
-	# render for self.render within this file
 	def render(self, page):
-		#self.templateValues['comments'] = [{'date': i.date, 'body': i.body, 'key': i.key.urlsafe()} for i in Comment.query().fetch()]
-		self.templateValues['locations'] = [{'name': i.name, 'key':i.key.urlsafe()} for i in Location.query(ancestor = ndb.Key(Location, self.app.config.get('default-group'))).fetch()]
+		self.templateValues['locations'] = [{'title': i.title, 'key':i.key.urlsafe()} for i in Location.query(ancestor = ndb.Key(Location, self.app.config.get('default-group'))).fetch()]
 		BaseHandler.render(self, page, self.templateValues)
 
 	def get(self):
@@ -21,16 +19,16 @@ class Admin(BaseHandler):
 		if action == 'addLocation':
 			key = ndb.Key(Location, self.app.config.get('default-group'))
 			location = Location(parent = key)
-			location.name = self.request.get('locationName')
+			location.title = self.request.get('locationName')
 			if self.request.get('locationActive') == 'finish':
-				location.active = True
+				location.finish = True
 			else:
-				location.active = False
-			location.rating = int(self.request.get('rating'))
+				location.finish = False
+			location.improtance = int(self.request.get('rating'))
 			location.image = str(icon_key)
 			location.description = str(self.request.get('description'))
 			location.put()
-			self.templateValues['message'] = 'Added location ' + location.name + '.'
+			self.templateValues['message'] = 'Added memo ' + location.title + '.'
 		else:
 			self.templateValues['message'] = 'Undefined action.'
 
