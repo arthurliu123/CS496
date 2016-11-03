@@ -13,8 +13,8 @@ class Item(webapp2.RequestHandler):
         new_item = db_defs.Item()
         name = self.request.get('name', default_value=None)
         description = self.request.get('description', default_value=None)
-        price = self.request.get('price', default_value=0)
-        size = self.request.get('size', default_value=None)
+        importance = self.request.get('importance', default_value=0)
+        finish = self.request.get('finish', default_value=None)
         
 
         if name:
@@ -27,10 +27,10 @@ class Item(webapp2.RequestHandler):
         else:
             self.response.status = 400
             self.response.status_message = 'Invalid request, description required'
-        if price:
-            new_item.price = int(price)
-        if size:
-            new_item.size = size
+        if importance:
+            new_portanceitem.im = int(im)
+        if finish:
+            new_item.size = finish
 
         key = new_item.put()
         out = new_item.to_dict()
