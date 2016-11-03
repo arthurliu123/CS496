@@ -10,7 +10,7 @@ class Model(ndb.Model):
 class Item(Model):
 	name = ndb.StringProperty(required=True)
 	description = ndb.StringProperty(required=True)
-	price = ndb.FloatProperty()
+	price = ndb.IntegerProperty()
 	size = ndb.StringProperty()
 
 class Sales(Model):

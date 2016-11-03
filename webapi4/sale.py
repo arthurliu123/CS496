@@ -98,23 +98,6 @@ class Sale(webapp2.RequestHandler):
             self.response.write('Sale ' + kwargs['id'] + ' deleted.')
 
 
-'''
-#Implementation not tested
-class SaleSearch(webapp2.RequestHandler):
-    def post(self):
-        if 'application/json' not in self.request.accept:
-            self.response.status = 406
-            self.response.status_message = 'Not acceptable, API only supports application/json MIME type.'
-            self.response.write(self.response.status_message)
-            return
-        q = db_defs.Sale.query()
-        if self.request.get('name',None):
-            q = q.filter(db_defs.Sale.name == self.request.get('name'))
-        keys = q.fetch(keys_only=True)
-        results = {'keys' : [x.id() for x in keys]}
-        self.response.write(json.dumps(results))
-'''
-
 class SaleItems(webapp2.RequestHandler):
     #Update a Sale entity, add an additional item
     def put(self, **kwargs):

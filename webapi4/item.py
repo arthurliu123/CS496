@@ -28,7 +28,7 @@ class Item(webapp2.RequestHandler):
             self.response.status = 400
             self.response.status_message = 'Invalid request, description required'
         if price:
-            new_item.price = float(price)
+            new_item.price = int(price)
         if size:
             new_item.size = size
 
@@ -55,23 +55,3 @@ class Item(webapp2.RequestHandler):
             #results = {'keys' : [x.id() for x in keys]}
             results = {x.key.id() : x.to_dict() for x in keys}
             self.response.write(json.dumps(results))
-
-'''
-#Implementation not fully tested
-class ItemSearch(webapp2.RequestHandler):
-    #Search for an Item entity
-    def post(self):
-        if 'application/json' not in self.request.accept:
-            self.response.status = 406
-            self.response.status_message = 'Not acceptable, API only supports application/json MIME type.'
-            self.response.write(self.response.status_message)
-            return
-        q = db_defs.Item.query()
-        if self.request.get('name',None):
-            q = q.filter(db_defs.Item.name == self.request.get('name'))
-        keys = q.fetch(keys_only=True)
-        results = {'keys' : [x.id() for x in keys]}
-        self.response.write(json.dumps(results))
-'''
-
-
