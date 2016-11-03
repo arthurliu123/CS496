@@ -10,8 +10,8 @@ class Model(ndb.Model):
 class Item(Model):
 	name = ndb.StringProperty(required=True)
 	description = ndb.StringProperty(required=True)
-	importance = ndb.FloatProperty()
-	finish = ndb.StringProperty()
+	price = ndb.FloatProperty()
+	size = ndb.StringProperty()
 	user = ndb.StringProperty(required=True)
 
 class Sales(Model):
