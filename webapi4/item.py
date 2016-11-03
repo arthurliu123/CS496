@@ -15,7 +15,7 @@ class Item(webapp2.RequestHandler):
         description = self.request.get('description', default_value=None)
         price = self.request.get('price', default_value=0)
         size = self.request.get('size', default_value=None)
-        user = self.request.get('user', default_value=None)
+        
 
         if name:
             new_item.name = name
@@ -31,11 +31,7 @@ class Item(webapp2.RequestHandler):
             new_item.price = float(price)
         if size:
             new_item.size = size
-        if user:
-            new_item.user = user
-        else:
-            self.response.status = 400
-            self.response.status_message = 'Invalid request, username required'
+
         key = new_item.put()
         out = new_item.to_dict()
         self.response.write(json.dumps(out))

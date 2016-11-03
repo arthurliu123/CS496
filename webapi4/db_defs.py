@@ -12,7 +12,6 @@ class Item(Model):
 	description = ndb.StringProperty(required=True)
 	price = ndb.FloatProperty()
 	size = ndb.StringProperty()
-	user = ndb.StringProperty(required=True)
 
 class Sales(Model):
 	items = ndb.KeyProperty(repeated=True)
@@ -22,15 +21,10 @@ class Sales(Model):
 	total_cost = ndb.FloatProperty()
 	latitude = ndb.FloatProperty()
 	longitude = ndb.FloatProperty()
-	user = ndb.KeyProperty(required=True)
+	
 
 
 	def to_dict(self):
 		d = super(Sales, self).to_dict()
 		d['items'] = [i.id() for i in d['items']]
 		return d 
-
-class User(Model):
-	username = ndb.StringProperty(required=True)
-	password = ndb.StringProperty(required=True)
-

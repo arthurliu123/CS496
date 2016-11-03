@@ -28,7 +28,6 @@ class Sale(webapp2.RequestHandler):
         total_cost = self.request.get('total_cost',default_value=0)
         latitude = self.request.get('latitude', default_value=-1)
         longitude = self.request.get('longitude', default_value=-1)
-        user = self.request.get('user', default_value=None)
 
         if items:
             for item in items:
@@ -54,12 +53,6 @@ class Sale(webapp2.RequestHandler):
             new_sale.latitude = float(latitude)
         if longitude:
             new_sale.longitude = float(longitude)
-        if user:
-            new_sale.user = user
-        else:
-            self.response.status = 400
-            self.response.status_message = 'Invalid request, username required'
-
 
         key = new_sale.put()
         out = new_sale.to_dict()
