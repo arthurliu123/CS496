@@ -10,8 +10,8 @@ class Model(ndb.Model):
 class Item(Model):
 	name = ndb.StringProperty(required=True)
 	description = ndb.StringProperty(required=True)
-	price = ndb.IntegerProperty()
-	size = ndb.StringProperty()
+	importance = ndb.IntegerProperty()
+	finish = ndb.StringProperty()
 
 class Sales(Model):
 	items = ndb.KeyProperty(repeated=True)
