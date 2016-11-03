@@ -28,7 +28,7 @@ class Item(webapp2.RequestHandler):
             self.response.status = 400
             self.response.status_message = 'Invalid request, description required'
         if importance:
-            new_portanceitem.importance = int(importance)
+            new_item.importance = int(importance)
         if finish:
             new_item.finish = finish
 
