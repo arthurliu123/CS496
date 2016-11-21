@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Online Memo</string>
+    <string name="openCamera">Open Camera</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
